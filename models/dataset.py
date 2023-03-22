@@ -50,10 +50,10 @@ class Dataset:
 
         camera_dict = np.load(os.path.join(self.data_dir, self.render_cameras_name))
         self.camera_dict = camera_dict
-        self.images_lis = sorted(glob(os.path.join(self.data_dir, 'image/*.png')))
+        self.images_lis = sorted(glob(os.path.join(self.data_dir, 'image/*')))
         self.n_images = len(self.images_lis)
         self.images_np = np.stack([cv.imread(im_name) for im_name in self.images_lis]) / 256.0
-        self.masks_lis = sorted(glob(os.path.join(self.data_dir, 'mask/*.png')))
+        self.masks_lis = sorted(glob(os.path.join(self.data_dir, 'mask/*')))
         self.masks_np = np.stack([cv.imread(im_name) for im_name in self.masks_lis]) / 256.0
 
         # world_mat is a projection matrix from world to image
